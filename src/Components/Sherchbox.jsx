@@ -6,7 +6,7 @@ function Sherchbox() {
     <form className="flex items-center bg-white rounded-full overflow-hidden">
       <input
         type="search"
-        className="w-[240px] h-12 px-4 outline-none bg-white"
+        className="w-[240px] h-12 px-4 border-0 outline-none bg-white"
         placeholder="Search products..."
       />
 

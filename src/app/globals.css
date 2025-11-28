@@ -1,1 +1,9 @@
 @import "tailwindcss";
+@import "flowbite/dist/flowbite.min.css";
+
+#underline {
+  font-family: "Outfit", sans-serif;
+}
+h1 {
+  font-family: "Outfit", sans-serif;
+}

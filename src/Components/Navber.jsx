@@ -6,14 +6,14 @@ import AvaterSection from "./AvaterSection";
 function Navber() {
   return (
     <nav className=" sticky top-4 z-[500] px-4">
-      <div className="max-w-7xl flex items-center justify-between  bg-[#d2dbdd]  mx-auto w-full  h-[70px] rounded-2xl">
-        <Link href="/" className="flex items-center h-full gap-2">
+      <div className="max-w-7xl flex items-center justify-between  bg-[#eaeff0]  mx-auto w-full  h-[70px] rounded-2xl">
+        <Link href="/" className="flex items-center h-full ">
           <Image
             src="/images/Logo.png"
             width={50}
             height={50}
             alt="HomeMart Logo"
-            className="ml-1"
+            className="ml-1 p-2"
             priority
           />
           <span className="font-semibold text-lg">HomeMart.</span>

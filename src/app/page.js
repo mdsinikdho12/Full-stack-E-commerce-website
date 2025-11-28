@@ -1,9 +1,16 @@
+import Herosection from "@/Components/Herosection";
 import Navber from "@/Components/Navber";
+import AllCatagory from "@/Components/AllCatagory";
+import AllProducts from "@/Components/AllProducts";
+import Footer from "@/Components/Footer";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-r from-[#d2dbdd] to-[#eff0db] h-screen w-screen">
-      <Navber />
+    <div className="">
+      <Herosection />
+      <AllCatagory />
+      <AllProducts />
+      <Footer />
     </div>
   );
 }
