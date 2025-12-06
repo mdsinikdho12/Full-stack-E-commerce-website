@@ -38,6 +38,7 @@ function AllProducts() {
             ProductName={product.ProductName}
             price={product.price}
             image={product.productImage}
+            id={product.id}
           />
         ))}
       </div>
