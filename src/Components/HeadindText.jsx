@@ -1,9 +1,10 @@
 import React from "react";
 
-function HeadindText({ headingfast, headinglast }) {
+function HeadingText({ headingfast, headinglast, marginTop = "mt-30" }) {
   return (
-    <div className="max-w-7xl mx-auto text-center flex mt-30 items-center">
-      <h1 className="text-[#304b4e] text-3xl font-semibold ">{headingfast}</h1>
+    <div
+      className={`max-w-7xl mx-auto ${marginTop} text-center flex items-center`}>
+      <h1 className="text-[#304b4e] text-3xl font-semibold">{headingfast}</h1>
       <span className="text-purple-500 mx-1 font-semibold text-4xl relative inline-block stroke-current">
         {headinglast}
         <svg
@@ -20,4 +21,4 @@ function HeadindText({ headingfast, headinglast }) {
   );
 }
 
-export default HeadindText;
+export default HeadingText;
