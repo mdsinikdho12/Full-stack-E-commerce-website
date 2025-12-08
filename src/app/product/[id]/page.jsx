@@ -7,6 +7,7 @@ export default function productDeteils() {
   return (
     <div className="p-4">
       <h1>Product Details for ID: {id}</h1>
+      <p>Hi product is {id} </p>
     </div>
   );
 }
