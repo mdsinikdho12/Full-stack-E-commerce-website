@@ -6,13 +6,13 @@ export async function addCategory(formData) {
   try {
     await connectDB();
     const Catagory = await categoryModel.create({
-      name: formData.name,
-      catagoryImage: formData.img,
+      name: formData.get("categoryName"),
+      categoryImage: formData.get("categoryImage"),
     });
-    return Catagory;
+    return { success: true };
   } catch (error) {
     console.log(" Error AddCatagory", error);
-    return [];
+    return { success: false };
   }
 }
 

@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
-const catagorySchema = new mongoose.Schema({
+const categorySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     unique: true,
   },
-  catagoryImage: {
+  categoryImage: {
     type: String,
     required: true,
   },
 });
 
-export default mongoose.models.Catagory ||
-  mongoose.model("Catagorys", catagorySchema);
+export default mongoose.models.Category ||
+  mongoose.model("Category", categorySchema);
