@@ -1,5 +1,6 @@
 import HeadingText from "@/Components/HeadindText";
 import CategoryForm from "@/Components/adminComponents/CategoryForm";
+import CategoryList from "@/Components/adminComponents/CategoryList";
 
 function page() {
   return (
@@ -8,6 +9,7 @@ function page() {
         <HeadingText headingfast="Add" headinglast="Catagory" marginTop="0" />
 
         <CategoryForm />
+        <CategoryList />
       </div>
     </div>
   );

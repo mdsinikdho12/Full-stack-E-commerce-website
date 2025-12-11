@@ -1,6 +1,7 @@
 "use server";
 import connectDB from "@/lib/config/db";
 import categoryModel from "@/lib/models/categoryModel";
+import { revalidatePath } from "next/cache";
 
 export async function addCategory(formData) {
   try {
@@ -9,6 +10,7 @@ export async function addCategory(formData) {
       name: formData.get("categoryName"),
       categoryImage: formData.get("categoryImage"),
     });
+    revalidatePath("/seller/addCatagory");
     return { success: true };
   } catch (error) {
     console.log(" Error AddCatagory", error);
