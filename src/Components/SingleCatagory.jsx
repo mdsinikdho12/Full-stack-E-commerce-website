@@ -11,6 +11,7 @@ function SingleCatagory({ category, image, id }) {
           height={150}
           alt={category}
           className="object-cover cursor-pointer hover:scale-110 transition-transform"
+          title={category}
         />
       </div>
     </div>

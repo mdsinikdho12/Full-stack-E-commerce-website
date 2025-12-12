@@ -9,7 +9,7 @@ function Product({ ProductName, price, image, id }) {
         <Heart className="absolute top-4 right-4 w-8 h-8 text-red-500 cursor-pointer" />
 
         <Image
-          src={image}
+          src={image[0]}
           width={250}
           height={250}
           alt={ProductName}

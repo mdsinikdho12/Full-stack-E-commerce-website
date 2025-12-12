@@ -3,6 +3,7 @@
 import connectDB from "@/lib/config/db";
 import ProductModel from "@/lib/models/ProductModel";
 
+// get products logic
 export async function getAllProducts() {
   try {
     await connectDB();
@@ -15,7 +16,21 @@ export async function getAllProducts() {
   }
 }
 
-// addproduct function
+// get single product by id
+
+export async function singleProduct(id) {
+  try {
+    await connectDB();
+    const product = await ProductModel.findById(id);
+    if (!product) {
+      return { success: false, message: "Product not found !" };
+    }
+
+    return { success: true, data: JSON.parse(JSON.stringify(product)) };
+  } catch (error) {}
+}
+
+// addproduct logic
 export async function addProduct(formData) {
   try {
     await connectDB();
