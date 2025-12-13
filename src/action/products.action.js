@@ -2,6 +2,7 @@
 
 import connectDB from "@/lib/config/db";
 import ProductModel from "@/lib/models/ProductModel";
+import { revalidatePath } from "next/cache";
 
 // get products logic
 export async function getAllProducts() {
@@ -42,14 +43,14 @@ export async function addProduct(formData) {
       stock: Number(formData.stock),
       images: formData.images,
     });
-
+    revalidatePath("/");
     return {
       success: true,
       message: "Product added successfuly !",
       data: JSON.parse(JSON.stringify(newProduct)),
     };
   } catch (error) {
-    console.log("🚨 Add Product Error:", error);
+    console.log(" Add Product Error:", error);
     return {
       success: false,
       message: "Error adding product!",

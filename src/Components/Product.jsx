@@ -10,8 +10,8 @@ function Product({ ProductName, price, image, id }) {
 
         <Image
           src={image[0]}
-          width={250}
-          height={250}
+          width={200}
+          height={200}
           alt={ProductName}
           className="object-contain cursor-pointer hover:scale-110 transition-transform"
         />
