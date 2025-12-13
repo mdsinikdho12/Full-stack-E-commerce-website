@@ -2,7 +2,7 @@ import { singleProduct } from "@/action/products.action";
 import Image from "next/image";
 import Reating from "@/Components/Reating";
 import ProductShow from "@/Components/ProductShow";
-import { revalidatePath } from "next/cache";
+import DiscriptionAndReviws from "@/Components/DiscriptionAndReviws";
 
 export default async function productDeteils(props) {
   const { params } = props;
@@ -21,7 +21,11 @@ export default async function productDeteils(props) {
   return (
     <div className="max-w-7xl   p-6 mt-30  bg-[#eaeff0] mx-auto w-full rounded">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4  ">
-        <ProductShow product={product} />
+        <div className="">
+          <ProductShow product={product} />
+
+          <DiscriptionAndReviws product={product} />
+        </div>
 
         <div className=" flex flex-col gap-3 ">
           <h2 className="font-medium text-2xl text-[#242424]">
