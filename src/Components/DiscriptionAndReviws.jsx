@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Star } from "lucide-react";
+import UserComment from "./UserComment";
 
 function DiscriptionAndReviws({ product }) {
   const [activeTab, setActiveTab] = useState("description");
@@ -33,7 +33,6 @@ function DiscriptionAndReviws({ product }) {
         </button>
       </div>
 
-      {/* description tab data  */}
       {activeTab === "description" && (
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-gray-900">{product.title}</h3>
@@ -43,42 +42,7 @@ function DiscriptionAndReviws({ product }) {
         </div>
       )}
 
-      {activeTab === "reviews" && (
-        <div className="space-y-4 ">
-          <div className="space-y-4">
-            {product.reviews.map((review, idx) => (
-              <div
-                key={idx}
-                className=" rounded-lg p-4 hover:shadow-md transition-shadow">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={16}
-                        className={
-                          i < review.rating
-                            ? "fill-yellow-400 text-yellow-400"
-                            : "text-gray-300"
-                        }
-                      />
-                    ))}
-                  </div>
-                  <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">
-                    {review.rating}/5
-                  </span>
-                </div>
-                <p className="text-gray-700 leading-relaxed">
-                  {review.comment}
-                </p>
-                <p className="text-xs text-gray-500 mt-3">
-                  User: {review.user.substring(0, 10)}...
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      {activeTab === "reviews" && <UserComment product={product} />}
     </div>
   );
 }

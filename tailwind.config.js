@@ -1,3 +1,10 @@
+const { Hind_Siliguri } = require("next/font/google");
+
+const hindSiliguri = Hind_Siliguri({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["bengali", "latin"],
+});
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx}",
@@ -5,7 +12,11 @@ module.exports = {
     "node_modules/flowbite/**/*.{js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        hind: [hindSiliguri.style.fontFamily],
+      },
+    },
   },
   plugins: [require("flowbite/plugin")],
 };
