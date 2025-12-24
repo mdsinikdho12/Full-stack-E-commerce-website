@@ -3,8 +3,9 @@
 import connectDB from "@/lib/config/db";
 import ProductModel from "@/lib/models/ProductModel";
 import { revalidatePath } from "next/cache";
+import categoryModel from "@/lib/models/categoryModel";
 
-// get products logic
+// get all products logic
 export async function getAllProducts() {
   try {
     await connectDB();
@@ -55,5 +56,26 @@ export async function addProduct(formData) {
       success: false,
       message: "Error adding product!",
     };
+  }
+}
+
+// get products by category id
+
+export async function getProductsByCategory(categoryid) {
+  try {
+    await connectDB();
+
+    const category = await categoryModel.findById(categoryid);
+
+    if (!category) {
+      return { success: false, message: "Category canot found" };
+    }
+    const Products = await ProductModel.find({
+      category: category.name,
+    }).lean();
+    return { success: true, data: JSON.parse(JSON.stringify(Products)) };
+  } catch (error) {
+    console.log("Error fetching products by category ... ", error);
+    return { success: false, message: error.message };
   }
 }

@@ -28,3 +28,18 @@ export async function getcatagory() {
     return [];
   }
 }
+
+export async function getCategoryById(id) {
+  try {
+    await connectDB();
+    const category = await categoryModel.findById(id);
+    if (!category) {
+      return { success: false, message: "Category not found!" };
+    }
+
+    return { success: false, data: category };
+  } catch (error) {
+    console.log("Error fetehing category ... ", error);
+    return { success: false, message: error.message };
+  }
+}

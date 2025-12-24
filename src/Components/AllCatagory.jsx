@@ -9,7 +9,7 @@ async function AllCatagory() {
       <div className="text-center flex justify-center items-center">
         <h1 className="text-[#304b4e] text-3xl font-semibold ">All</h1>
         <span className="text-purple-500 mx-1 font-semibold text-4xl relative inline-block stroke-current">
-          Catagory
+          Category
           <svg
             className="absolute -bottom-0.5 w-full max-h-1.5"
             viewBox="0 0 55 5"
@@ -28,6 +28,7 @@ async function AllCatagory() {
             key={catagory._id}
             category={catagory.name}
             image={catagory.categoryImage}
+            id={catagory._id}
           />
         ))}
       </div>
