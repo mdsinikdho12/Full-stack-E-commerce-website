@@ -13,12 +13,6 @@ function Page() {
 
         <RegistationFrom />
 
-        <button
-          type="submit"
-          className="w-full mt-4 bg-purple-500 text-white py-2 rounded-lg font-medium hover:bg-purple-600 transition-all">
-          Register
-        </button>
-
         <div className="flex items-center gap-2 my-4 text-gray-400 text-sm">
           <hr className="flex-1" />
           <span>or</span>
