@@ -22,7 +22,9 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
+const viewport = {
+  themeColor: "#4285f4",
+};
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
