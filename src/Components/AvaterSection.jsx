@@ -3,9 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import Cartbutton from "./Cartbutton";
 import { signOut, useSession, signIn } from "next-auth/react";
+import { useState } from "react";
+import DropdownMenu from "./DropdownMenu";
 
 function AvaterSection() {
   const { data: session } = useSession();
+  const [isDropdownOpen, setIsDropdownopen] = useState(false);
 
   return (
     <div className="flex items-center gap-3">
@@ -19,7 +22,7 @@ function AvaterSection() {
               : session.user.name}
           </p>
 
-          <Link href="/Avater" className="flex-shrink-0">
+          <div onClick={() => setIsDropdownopen(true)}>
             <Image
               src={
                 session.user.image ||
@@ -30,7 +33,15 @@ function AvaterSection() {
               alt="Avatar"
               className="rounded-full object-cover border-2 border-purple-200 hover:border-purple-500 transition-all"
             />
-          </Link>
+          </div>
+
+          {isDropdownOpen && <DropdownMenu session={session} />}
+          {isDropdownOpen && (
+            <div
+              className="fixed inset-0 z-40"
+              onClick={() => setIsDropdownopen(false)}
+            />
+          )}
         </div>
       ) : (
         <button

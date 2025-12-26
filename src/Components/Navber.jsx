@@ -7,7 +7,7 @@ function Navber() {
   return (
     <nav className=" sticky top-4 z-[500] px-4">
       <div className="max-w-7xl flex items-center justify-between  bg-[#eaeff0]  mx-auto w-full  h-[70px] rounded-2xl">
-        <Link href="/" className="flex items-center h-full ">
+        <Link href="/" className="flex items-center relative h-full ">
           <Image
             src="/images/Logo.png"
             width={50}
