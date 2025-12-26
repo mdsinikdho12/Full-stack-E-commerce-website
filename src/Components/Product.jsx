@@ -5,7 +5,7 @@ import Link from "next/link";
 function Product({ ProductName, price, image, id }) {
   return (
     <Link href={`/product/${id}`}>
-      <div className="w-[400px] p-5 h-[420px] rounded-2xl bg-[#eaeff0] relative flex flex-col items-center ">
+      <div className="w-[400px] p-5 h-[420px] shadow-md rounded-2xl bg-[#eaeff0] relative flex flex-col items-center ">
         <Heart className="absolute top-4 right-4 w-8 h-8 text-red-500 cursor-pointer" />
 
         <Image

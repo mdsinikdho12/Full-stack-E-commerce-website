@@ -1,6 +1,7 @@
 "use server";
 import connectDB from "@/lib/config/db";
 import usermodel from "@/lib/models/usermodel";
+import bcrypt from "bcrypt";
 
 export async function getAllUsers() {
   try {
@@ -34,7 +35,7 @@ export async function createUser(formData) {
     const newUser = await usermodel.create({
       name,
       email,
-      password,
+      password: await bcrypt.hash(password, 10),
     });
 
     return {

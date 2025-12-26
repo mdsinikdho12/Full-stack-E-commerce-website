@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { createUser } from "@/action/user.action";
+import Router from "next/router";
 
 function RegistationFrom() {
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ function RegistationFrom() {
       const response = await createUser(formData);
 
       if (response?.success) {
-        setSuccess("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে 🎉");
+        setSuccess("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে ");
         e.target.reset();
       } else {
         setError(response?.message || "আবার চেষ্টা করুন");
@@ -29,6 +30,7 @@ function RegistationFrom() {
       setError("সার্ভার সমস্যা হয়েছে");
     } finally {
       setLoading(false);
+      Router.push("/login");
     }
   };
 
@@ -41,6 +43,7 @@ function RegistationFrom() {
         <input
           type="text"
           name="name"
+          required
           placeholder="Enter Your Name .."
           className="w-full border-0 text-gray-500 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-200"
         />
@@ -53,6 +56,7 @@ function RegistationFrom() {
         <input
           type="email"
           name="email"
+          required
           placeholder="Enter Your Email .."
           className="w-full border-0  text-gray-500  rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-200"
         />
@@ -65,6 +69,7 @@ function RegistationFrom() {
         <input
           type="password"
           name="password"
+          required
           placeholder="Enter Your Password .."
           className="w-full border-0 text-gray-500 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-200"
         />
