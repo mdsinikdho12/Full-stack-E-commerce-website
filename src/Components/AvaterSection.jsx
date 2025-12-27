@@ -1,9 +1,8 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import Cartbutton from "./Cartbutton";
-import { signOut, useSession, signIn } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { useState } from "react";
+import Cartbutton from "./Cartbutton";
 import DropdownMenu from "./DropdownMenu";
 
 function AvaterSection() {
@@ -11,42 +10,48 @@ function AvaterSection() {
   const [isDropdownOpen, setIsDropdownopen] = useState(false);
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-1 md:gap-3">
       <Cartbutton />
 
       {session?.user ? (
-        <div className="bg-white shadow-md mr-2 w-fit flex items-center gap-3 h-[55px] px-4 rounded-full ">
-          <p className="font-semibold font-sans text-purple-500 text-sm whitespace-nowrap max-w-[100px] truncate">
+        <div className="flex  mr-2 items-center gap-2 lg:gap-3 lg:bg-white lg:shadow-sm lg:px-4 h-[45px] md:h-[55px] rounded-full transition-all">
+          <p className="hidden lg:block font-semibold font-sans text-purple-600 text-sm whitespace-nowrap max-w-[100px] truncate">
             {session.user.name.length > 8
               ? session.user.name.slice(0, 8) + "..."
               : session.user.name}
           </p>
 
-          <div onClick={() => setIsDropdownopen(true)}>
+          {/* Avatar Image */}
+          <div
+            className="cursor-pointer shrink-0"
+            onClick={() => setIsDropdownopen(!isDropdownOpen)}>
             <Image
               src={
                 session.user.image ||
                 "https://img.icons8.com/color/48/user-male-circle--v5.png"
               }
-              width={44}
-              height={44}
+              width={40}
+              height={40}
               alt="Avatar"
-              className="rounded-full object-cover border-2 border-purple-200 hover:border-purple-500 transition-all"
+              className="rounded-full object-cover border-2 border-purple-200 hover:border-purple-500 transition-all md:w-[44px] md:h-[44px]"
             />
           </div>
 
-          {isDropdownOpen && <DropdownMenu session={session} />}
+          {/* Dropdown Logic */}
           {isDropdownOpen && (
-            <div
-              className="fixed inset-0 z-40"
-              onClick={() => setIsDropdownopen(false)}
-            />
+            <>
+              <DropdownMenu session={session} />
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setIsDropdownopen(false)}
+              />
+            </>
           )}
         </div>
       ) : (
         <button
           onClick={() => signIn("google")}
-          className="bg-purple-500 text-white px-6 py-2.5 mr-2 rounded-full font-medium text-sm hover:bg-purple-600 active:bg-purple-700 transition-all duration-200 shadow-md hover:shadow-lg">
+          className="bg-purple-500 text-white px-4 md:px-6 py-2 md:py-2.5 mr-1 md:mr-2 rounded-full font-medium text-xs md:text-sm hover:bg-purple-600 transition-all shadow-md">
           Login
         </button>
       )}
