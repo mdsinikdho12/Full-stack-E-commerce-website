@@ -16,7 +16,9 @@ function Navber() {
             className="ml-1 p-2"
             priority
           />
-          <span className="font-semibold text-lg">HomeMart.</span>
+          <span className="hidden md:block font-semibold text-lg">
+            HomeMart.
+          </span>
         </Link>
 
         <Sherchbox />
