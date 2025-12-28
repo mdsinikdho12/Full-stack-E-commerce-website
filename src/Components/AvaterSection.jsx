@@ -21,7 +21,6 @@ function AvaterSection() {
               : session.user.name}
           </p>
 
-          {/* Avatar Image */}
           <div
             className="cursor-pointer shrink-0"
             onClick={() => setIsDropdownopen(!isDropdownOpen)}>

@@ -1,5 +1,5 @@
-import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
+import { withAuth } from "next-auth/middleware";
 
 export const config = {
   matcher: [
@@ -14,24 +14,22 @@ export const config = {
 export default withAuth(
   async function middleware(req) {
     const url = req.nextUrl.pathname;
-
-    const role = req.nextauth?.token?.role || req.nextauth?.token?.user?.role;
-
-    if (url.includes("/admin") && role !== "admin") {
+    const role = req.nextauth.token.role;
+    console.log("FULL TOKEN:", req.nextauth.token);
+    if (url.startsWith("/admin") && role !== "admin") {
       return NextResponse.redirect(new URL("/", req.url));
     }
-    if (url.includes("/seller") && role !== "seller") {
+
+    if (url.startsWith("/seller") && role !== "seller") {
       return NextResponse.redirect(new URL("/", req.url));
     }
+
+    return NextResponse.next();
   },
   {
     callbacks: {
       authorized: ({ token }) => {
-        if (!token) {
-          return false;
-        }
-
-        return true;
+        return !!token;
       },
     },
   }

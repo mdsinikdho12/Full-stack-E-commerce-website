@@ -77,12 +77,20 @@ export const authOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.role = user.role;
+      } else if (!token.role) {
+        await connectDB();
+        const dbUser = await usermodel.findOne({ email: token.email });
+        if (dbUser) {
+          token.role = dbUser.role;
+        }
       }
       return token;
     },
 
     async session({ session, token }) {
       session.user.id = token.id;
+      session.user.role = token.role;
       return session;
     },
 
@@ -100,6 +108,7 @@ export const authOptions = {
             email: user.email,
             image: user.image,
             provider: "google",
+            role: "user",
           });
         }
       }
