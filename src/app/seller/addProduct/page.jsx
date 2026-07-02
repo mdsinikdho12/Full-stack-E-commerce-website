@@ -1,9 +1,21 @@
 "use client";
 import React, { useState } from "react";
-import JoditEditor from "jodit-react";
+import dynamic from "next/dynamic";
 import HeadingText from "@/Components/HeadindText";
 import { addProduct } from "@/action/products.action";
 import { X, Loader } from "lucide-react";
+
+const JoditEditor = dynamic(
+  () => import("jodit-react").then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="min-h-[220px] rounded-lg border border-dashed border-purple-300 bg-white p-4 text-sm text-gray-500">
+        Loading editor...
+      </div>
+    ),
+  },
+);
 
 function Page() {
   const [description, setDescription] = useState("");
@@ -27,7 +39,7 @@ function Page() {
         {
           method: "POST",
           body: formData,
-        }
+        },
       );
 
       if (!response.ok) {
@@ -82,8 +94,8 @@ function Page() {
                       uploading: false,
                       publicId: cloudinaryData.publicId,
                     }
-                  : img
-              )
+                  : img,
+              ),
             );
           } catch (error) {
             console.error("Error uploading to Cloudinary:", error);

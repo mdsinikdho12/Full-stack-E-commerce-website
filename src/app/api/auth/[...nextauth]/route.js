@@ -68,6 +68,7 @@ export const authOptions = {
           email: user.email,
           role: user.role,
           profileImage: user.profileImage,
+          isEmailVerified: user.isEmailVerified,
         };
       },
     }),

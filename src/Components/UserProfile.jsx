@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import { Store, User, Shield } from "lucide-react";
+import roleConfig from "@/data/RoleConfig";
 
 function UserProfile({ session }) {
+  const Userole = session?.user?.role || "user";
+
+  const cuurentRoleConfig = roleConfig[Userole] || roleConfig.User;
+  const Roleicon = cuurentRoleConfig.icon;
+
   return (
     <div className="bg-[#eaeff0] rounded-lg p-8 flex items-center gap-8">
       <div className="flex-shrink-0">
@@ -26,11 +33,12 @@ function UserProfile({ session }) {
         </h1>
 
         <p className="text-gray-600 mb-4">{session?.user?.email}</p>
-        {session?.user?.role && (
-          <p className="text-sm font-semibold text-purple-500 bg-purple-100 inline-block px-3 py-1 rounded-full">
-            {session.user.role}
-          </p>
-        )}
+
+        <div
+          className={`${cuurentRoleConfig.bgColor} ${cuurentRoleConfig.textColor} inline-flex items-center gap-2 px-4 py-2 rounded-full`}>
+          <Roleicon className="w-5 h-5 " />
+          <span>{cuurentRoleConfig.label}</span>
+        </div>
       </div>
     </div>
   );
